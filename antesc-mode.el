@@ -34,7 +34,7 @@
 	 )))
 
   
-  (define-derived-mode antesc-mode prog-mode "Antesc mode"
+  (define-derived-mode antesc-mode c-mode "Antesc mode"
     "MYDSL mode is a major mode for editing MYDSL  files"
 
     ;(kill-all-local-variables)

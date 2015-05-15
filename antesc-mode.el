@@ -21,7 +21,7 @@
        ("\\s\"\\|\\s|" . font-lock-string-face)
 	 ("\\b\\$\\$[[:alnum:]\|_]+\\b" . font-lock-warning-face)
 	 ("\\b\\$[[:alnum:]\|_]+\\b" . font-lock-variable-name-face)
-	 ("\\b[[:digit:]]+\\b" . font-lock-constant-face)
+	 ("\\b[[:digit:]]+\\(\\(ms\\)\\|\\(s\\)\\)?\\b" . font-lock-constant-face)
 	 
 	 ("::[[:alnum:]\|_]+\\b" . font-lock-preprocessor-face)
 

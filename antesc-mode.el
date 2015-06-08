@@ -35,9 +35,10 @@
 
 
 (defun highlight-line (pos)
-  (let ((overlay-highlight (make-overlay
-			    (line-beginning-position pos)
-			    (+ 1 (line-end-position pos)))))
+  (beginning-of-line pos)
+  (let ((overlay-highlight (make-overlay					
+			     (line-beginning-position)
+			    (+ 1 (line-end-position)))))
     (overlay-put overlay-highlight 'face '(:background "lightgreen"))
     (overlay-put overlay-highlight 'line-highlight-overlay-marker t)))
 

@@ -33,6 +33,14 @@
 
 	 )))
 
+
+(defun highlight-line (pos)
+  (let ((overlay-highlight (make-overlay
+			    (line-beginning-position pos)
+			    (+ 1 (line-end-position pos)))))
+    (overlay-put overlay-highlight 'face '(:background "lightgreen"))
+    (overlay-put overlay-highlight 'line-highlight-overlay-marker t)))
+
   
   (define-derived-mode antesc-mode c-mode "Antesc mode"
     "MYDSL mode is a major mode for editing MYDSL  files"
@@ -72,6 +80,8 @@
     ;; I just updated the variable to have the proper nesting (as noted above)
     ;; and use the value directly here
     (setq font-lock-defaults antesc-font-lock-defaults)
+
+    (highlight-line 10)
 
     ;;A gnu-correct program will have some sort of hook call here.
 

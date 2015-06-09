@@ -2,6 +2,11 @@
 
 ;; Just syntax highlighting now
 
+;; Documenting OSC protocol for Antescofo
+;; prefix /antescofo/
+;; in port: 5678 ; out_port : 6789
+;; event_beatpos
+
 (defvar antesc-control '("loop" "if" "else" "Curve" "whenever" "@grain" "@jump" "@guard" "@abort" "@action" "@ante" "@name" "@norec" "@post" "@kill" "@target" ) )
 ;(defvar antesc-control '("loop" "if" "else" "Curve" "whenever" ) )
 (defvar antesc-types '("@global" "@local" "@tight" "@loose" "@type" "@dsp_channel" "@dsp_inlet" "@dsp_outlet" "@faustdef" "@macro_def" "@fun_def" "@proc_def" "@pattern_def" "@track_def" "@immediate" "@inlet" "@label" "@staticscope" "@type") )

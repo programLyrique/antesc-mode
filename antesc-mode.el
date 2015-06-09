@@ -2,10 +2,36 @@
 
 ;; Just syntax highlighting now
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;OSC
+
 ;; Documenting OSC protocol for Antescofo
 ;; prefix /antescofo/
 ;; in port: 5678 ; out_port : 6789
 ;; event_beatpos
+
+;;TODO: makes it possible to choose the host
+
+(require 'osc)
+
+;To send messages to Antescofo
+(defvar antescofo-client
+  (osc-make-client  "localhost" 5678) )
+
+;To receive messages from Antescofo
+(defvar antescofo-server
+  (osc-make-server
+   "localhost" 6789
+   (lambda (path &rest args)
+     (message "Unhandled: %s %S" path args))))
+
+(osc-server-set-handler antescofo-server "/antescofo/*"
+			(lambda (path &rest args)
+			  (message "Unhandled2: %s %S" path args)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;Syntax Highlighting
 
 (defvar antesc-control '("loop" "if" "else" "Curve" "whenever" "@grain" "@jump" "@guard" "@abort" "@action" "@ante" "@name" "@norec" "@post" "@kill" "@target" ) )
 ;(defvar antesc-control '("loop" "if" "else" "Curve" "whenever" ) )

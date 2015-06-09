@@ -15,20 +15,39 @@
 
 (require 'osc)
 
+(defvar address "localhost")
+(defvar inport 6789)
+(defvar outport 6789)
+
 ;To send messages to Antescofo
 (defvar antescofo-client
-  (osc-make-client  "localhost" 5678) )
+  (osc-make-client  address inport) )
 
 ;To receive messages from Antescofo
 (defvar antescofo-server
   (osc-make-server
-   "localhost" 6789
+   address outport
    (lambda (path &rest args)
      (message "Unhandled: %s %S" path args))))
 
 (osc-server-set-handler antescofo-server "/antescofo/*"
 			(lambda (path &rest args)
 			  (message "Unhandled2: %s %S" path args)))
+
+(defun antesc-host (host)
+  "Set the address of Antescofo for OSC"
+  (interactive "MHost: ")
+  ;;TODO: recompute client and server
+  (message "Host is %s" host)
+  (setq address host))
+
+(defun antesc-port (in out)
+  "Set the input and output port for OSC"
+  (interactive "nIn: \nnOut: ")
+  ;;TODO: recompute client and server
+  (message "In: %d and Out: %d" in out)
+  (setq inport in)
+  (setq outport out))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;Syntax Highlighting

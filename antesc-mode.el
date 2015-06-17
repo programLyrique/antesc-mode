@@ -34,6 +34,11 @@
 			(lambda (path &rest args)
 			  (message "Unhandled2: %s %S" path args)))
 
+(defun hook-kill-osc-processes ()
+  "Kill client and server processes"
+  (delete-process antescofo-server)
+  (delete-process antescofo-client))
+
 (defun antesc-host (host)
   "Set the address of Antescofo for OSC"
   (interactive "MHost: ")
@@ -138,6 +143,7 @@
 
      (setq major-mode 'antesc-mode)
      (setq mode-name "antesc mode")
+     (add-hook 'kill-buffer-hook 'hook-kill-osc-processes)
      (run-hooks 'antesc-mode-hook)
     )
   

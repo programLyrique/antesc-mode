@@ -17,7 +17,7 @@
 
 (defvar address "localhost")
 (defvar inport 6789)
-(defvar outport 6789)
+(defvar outport 5678)
 
 ;To send messages to Antescofo
 (defvar antescofo-client
@@ -53,6 +53,7 @@
   (message "In: %d and Out: %d" in out)
   (setq inport in)
   (setq outport out))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;Syntax Highlighting

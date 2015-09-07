@@ -39,12 +39,19 @@
   (delete-process antescofo-server)
   (delete-process antescofo-client))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Commands
+
 (defun antesc-host (host)
   "Set the address of Antescofo for OSC"
   (interactive "MHost: ")
   ;;TODO: recompute client and server
   (message "Host is %s" host)
-  (setq address host))
+  (setq address host)
+  (hook-kill-osc-processes)
+  (antescofo-client)
+  (antescofo-server))
 
 (defun antesc-port (in out)
   "Set the input and output port for OSC"
@@ -52,7 +59,11 @@
   ;;TODO: recompute client and server
   (message "In: %d and Out: %d" in out)
   (setq inport in)
-  (setq outport out))
+  (setq outport out)
+  (hook-kill-osc-processes)
+  (antescofo-client)
+  (antescofo-server))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
